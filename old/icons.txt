@@ -1,0 +1,5 @@
+/home/default/.vscode/extensions/christian-kohler.path-intellisense-2.9.0/icon
+/home/default/.local/share/Trash/files/astrowind/node_modules/@iconify/utils/lib/icon
+/home/default/.local/share/Trash/files/my-saas/node_modules/@iconify/utils/lib/icon
+/home/default/develop-env/projects/open-favs/node_modules/@iconify/utils/lib/icon
+/home/default/develop-env/starter-kits/astrowind/node_modules/@iconify/utils/lib/icon
