@@ -26,7 +26,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
   });
 });
 */
-document.getElementById('saveButton').addEventListener('click', () => { 
+document.querySelector('#saveButton').addEventListener('click', () => { 
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const activeTab = tabs[0];
     const url = activeTab.url;
@@ -34,7 +34,7 @@ document.getElementById('saveButton').addEventListener('click', () => {
     console.log('Fetching data for URL:', url);
 
     // Costruisci l'URL per il tuo endpoint con i parametri appropriati
-    const apiUrl = `http://localhost:4321/api/v1/test`;
+    const apiUrl = `https://bookmarks-list.netlify.app/api/v1/test`;
 
     // Esegui una richiesta fetch al tuo endpoint
     fetch(apiUrl, {
