@@ -5,8 +5,10 @@
   "description": "Save the current site to the database.",
   "permissions": [
     "activeTab",
-    "background"
+    "background",
+    "cookies"
   ],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "popup.js"
   },
