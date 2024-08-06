@@ -1,4 +1,3 @@
-
 document.querySelector('#saveButton').addEventListener('click', () => { 
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const activeTab = tabs[0]
@@ -28,6 +27,7 @@ document.querySelector('#saveButton').addEventListener('click', () => {
 
     /* @@@ fetch data @@@ */
     const apiUrl = `https://bookmarks-list.netlify.app/api/v1/test`
+    const sessionAuthUrl = 'https://open-favs.vercel.app/api/v2/auth/signin'
 
 
     // Esegui una richiesta fetch al tuo endpoint
@@ -37,43 +37,32 @@ document.querySelector('#saveButton').addEventListener('click', () => {
         'Content-Type': 'application/json'
       }
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      alert(data.message)
-    })
-    .catch((error) => {
-      console.error('Error:', error)
-      alert('Failed to fetch data.')
-    })
-  })
-})
-
-/*
-document.getElementById('saveButton').addEventListener('click', () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const activeTab = tabs[0];
-    const url = activeTab.url;
-
-    console.log('Saving URL:', url);
-
-    // Esegui una richiesta fetch al tuo endpoint per salvare l'URL
-    fetch('https://your-backend-api.com/add-url', {
-      method: 'POST',
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert(data.message)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+        alert('Failed to fetch data.')
+      })
+    
+    fetch(sessionAuthUrl, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ url: url })
+      }
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      alert('URL saved successfully!');
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('Failed to save URL.');
-    });
-  });
-});
-*/
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data.session.user.id);
+        alert(data.session.user.id)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+        alert('Failed to fetch data.')
+      })
+
+
+  })
+})
