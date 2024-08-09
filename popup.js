@@ -45,7 +45,7 @@ document.querySelector('#saveButton').addEventListener('click', () => {
           })
           .then(data => {
             // Mostra il risultato in un alert
-            alert(JSON.stringify(data)) // Usa JSON.stringify per convertire l'oggetto JSON in stringa
+            alert(JSON.stringify(data.body)) // Usa JSON.stringify per convertire l'oggetto JSON in stringa
           })
           .catch(error => {
             // Gestisci eventuali errori
