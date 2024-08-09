@@ -1,5 +1,8 @@
+
 const _url = 'https://open-favs.vercel.app'
 const sessionAuthUrl = _url + '/api/v2/auth/signin'
+const YOUR_TOKEN = '89773db3-7863-460c-ad3c-6abd0db43f1c'
+const API_URL = 'https://vnavarra.nuvolaris.dev/api/my/openfavs/assistant?name=enzo'
 
 let user_id = null
 
@@ -20,7 +23,37 @@ document.querySelector('#saveButton').addEventListener('click', () => {
           break;
         }
       }
-      if (isAuthenticated) {      
+      if (isAuthenticated) {
+
+        /* @@ testing  AI backend @@ */
+
+        var url = API_URL
+        let bearer = 'Bearer ' + YOUR_TOKEN
+
+        const response = fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Errore nella richiesta');
+            }
+            return response.json()// o response.text() se ti aspetti un testo
+          })
+          .then(data => {
+            // Mostra il risultato in un alert
+            alert(JSON.stringify(data)) // Usa JSON.stringify per convertire l'oggetto JSON in stringa
+          })
+          .catch(error => {
+            // Gestisci eventuali errori
+            alert('Errore: ' + error.message)
+          })
+
+
+        /* @@ get session info @@ */
         fetch(sessionAuthUrl, {
           method: 'GET',
           headers: {
